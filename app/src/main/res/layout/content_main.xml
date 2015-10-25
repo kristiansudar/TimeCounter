@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_main" tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/intro_text"
+        android:id="@+id/tvIntro"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/time_count"
+        android:id="@+id/tvTimeCountLabel"
+        android:layout_below="@+id/tvIntro"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="0"
+        android:id="@+id/tvTimeCountOutput"
+        android:layout_alignBottom="@+id/tvTimeCountLabel"
+        android:layout_toRightOf="@+id/tvTimeCountLabel"
+        android:layout_toEndOf="@+id/tvTimeCountLabel"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/start_time"
+        android:id="@+id/tvStartTimeLabel"
+        android:layout_below="@+id/tvTimeCountLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="80dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:inputType="datetime"
+        android:text="07:00"
+        android:id="@+id/tvStartTimeOutput"
+        android:layout_alignBottom="@+id/tvStartTimeLabel"
+        android:layout_toRightOf="@+id/tvStartTimeLabel"
+        android:layout_toEndOf="@+id/tvStartTimeLabel"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/end_time"
+        android:id="@+id/tvEndTimeLabel"
+        android:layout_below="@+id/tvStartTimeLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:inputType="datetime"
+        android:text="17:00"
+        android:id="@+id/tvEndTimeOutput"
+        android:layout_above="@+id/tvFinishTimeLabel"
+        android:layout_alignLeft="@+id/tvStartTimeOutput"
+        android:layout_alignStart="@+id/tvStartTimeOutput" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/finish_time"
+        android:id="@+id/tvFinishTimeLabel"
+        android:layout_below="@+id/tvEndTimeLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="80dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="16:14"
+        android:id="@+id/tvFinishTimeOutput"
+        android:layout_alignTop="@+id/tvFinishTimeLabel"
+        android:layout_alignLeft="@+id/tvEndTimeOutput"
+        android:layout_alignStart="@+id/tvEndTimeOutput" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/last_finish_time"
+        android:id="@+id/tvMaxFinishTimeLabel"
+        android:layout_below="@+id/tvFinishTimeLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="18:14"
+        android:id="@+id/tvMaxFinishTimeOutput"
+        android:layout_marginTop="23dp"
+        android:textColor="#b31616"
+        android:layout_below="@+id/tvMaxFinishTimeLabel"
+        android:layout_alignLeft="@+id/tvFinishTimeOutput"
+        android:layout_alignStart="@+id/tvFinishTimeOutput" />
+
+</RelativeLayout>
