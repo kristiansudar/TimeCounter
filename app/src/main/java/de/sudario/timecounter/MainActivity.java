@@ -11,15 +11,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
-    private Time tStartTime = null;
-    private Time tEndTime = null;
+    private Date tStartTime = null;
+    private Date tEndTime = null;
     private long lTimeCount = 0;
 
-    private void addTime(Time pStart, Time pEnd){
+    private void addTime(Date pStart, Date pEnd){
         // Brutto Arbeitszeit
         long diff = pEnd.getTime() - pStart.getTime();
         // Abzug der Pause - 50 Minuten in Millisekunden
@@ -42,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     }*/
 
-    private void finishTime(Time pStart){
+    private void finishTime(Date pStart){
 
     }
 
@@ -52,7 +55,28 @@ public class MainActivity extends AppCompatActivity {
     TextView endTime;
     TextView finishtime;
 
-
+    public void calcFinishDate(String time) {
+        SimpleDateFormat df = new java.text.SimpleDateFormat("hh:mm a");
+        try {
+            Date tempTime = df.parse(time);
+            //Anfangszeit + 8std
+            long finishTimeinMS = tempTime.getTime() + 28800000;
+            // Bruttozeit + 24 Minuten
+            finishTimeinMS = finishTimeinMS + 1440000;
+            //Umrechnung in Sekunden
+            int  timeInSeconds = (int)finishTimeinMS / 1000;
+            int hours, minute;
+            //Stunden
+            hours = timeInSeconds / 3600;
+            //Minuten
+            timeInSeconds = timeInSeconds - (hours * 3600);
+            minute = timeInSeconds / 60;
+            //Setzen des Textviews
+            finishtime.setText(hours+":"+minute);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,9 +106,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
             startTime.setText(hourOfDay+":"+minute);
-
+            //SBerechnen des Feierabends + Setzen des Textviews
+            calcFinishDate(hourOfDay+":"+minute);
         }
     };
+
     TimePickerDialog.OnTimeSetListener onTimeSetListenerEnd = new TimePickerDialog.OnTimeSetListener() {
         @Override
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
