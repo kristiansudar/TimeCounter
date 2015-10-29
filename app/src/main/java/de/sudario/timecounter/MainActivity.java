@@ -58,28 +58,18 @@ public class MainActivity extends AppCompatActivity {
     public void calcFinishDate(String time) {
         SimpleDateFormat df = new java.text.SimpleDateFormat("HH:mm");
         try {
-            //Milisekunden, die seit 1970 vergangen sind
-            Date tempTime = df.parse(time);
-            //Differenz zu Heute muss abgezogen werden
 
-            long finishTimeinMS = tempTime.getTime();
-           
-            //Anfangszeit + 8std
-            finishTimeinMS = finishTimeinMS + 28800000;
-            // Bruttozeit + 24 Minuten
-            finishTimeinMS = finishTimeinMS + 1440000;
-            //Umrechnung in Sekunden
-            int  timeInSeconds = (int)finishTimeinMS / 1000;
-            int hours, minute;
-            //Stunden
-            hours = timeInSeconds / 3600;
-            //Minuten
-            timeInSeconds = timeInSeconds - (hours * 3600);
-            minute = timeInSeconds / 60;
+            Date tempTime = df.parse(time);
+            //ToDo Calendar an 24h Format anpassen
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(tempTime);
+            calendar.add(Calendar.HOUR, 8);
+            calendar.add(Calendar.MINUTE, 50);
+            calendar.add(Calendar.MINUTE, 24);
 
             //Setzen des Textviews
             finishtime = (TextView) findViewById(R.id.tvFinishTimeOutput);
-            finishtime.setText(hours+":"+minute);
+            finishtime.setText(calendar.get(Calendar.HOUR)+":"+calendar.get(Calendar.MINUTE));
         } catch (ParseException e) {
             e.printStackTrace();
         }
