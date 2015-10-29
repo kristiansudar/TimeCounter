@@ -39,16 +39,6 @@ public class MainActivity extends AppCompatActivity {
         lTimeCount = diff;
     }
 
-    //TODo
-    /*private Time getFinishTime(Time pStarttime){
-
-
-    }*/
-
-    private void finishTime(Date pStart){
-
-    }
-
     Calendar calendarStart = Calendar.getInstance();
     Calendar calendarEnd = Calendar.getInstance();
     TextView startTime;
