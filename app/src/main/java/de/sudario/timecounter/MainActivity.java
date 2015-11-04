@@ -22,36 +22,22 @@ public class MainActivity extends AppCompatActivity {
     private Date tEndTime = null;
     private long lTimeCount = 0;
 
-    private void addTime(Date pStart, Date pEnd){
-        // Brutto Arbeitszeit
-        long diff = pEnd.getTime() - pStart.getTime();
-        // Abzug der Pause - 50 Minuten in Millisekunden
-        long ohnePause = 0;
-        ohnePause = diff - 3000000;
-        // Abzug der Tarifvereinbarung - 24 Minuten in Millisekunden
-        long netto = 0;
-        netto = ohnePause - 1440000;
-        diff = netto;
-        //Maximalarbeitszeit von 10 Std
-        if (diff > 10){
-            diff = 10;
-        }
-        lTimeCount = diff;
-    }
-
     Calendar calendarStart = Calendar.getInstance();
     Calendar calendarEnd = Calendar.getInstance();
     TextView startTime;
     TextView endTime;
     TextView finishtime;
     TextView maxFinishTime;
-
-    public void calcFinishDate(String time) {
+    //ToDo Kapselung:
+    //calcFinishDate
+    //calcMaxFinishDate
+    //SetTextview
+    //ToDo Berechnung des Zeitsaldos
+    private void calcFinishDate(String time) {
         SimpleDateFormat df = new java.text.SimpleDateFormat("HH:mm");
         try {
 
             Date tempTime = df.parse(time);
-            //ToDo Calendar an 24h Format anpassen
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(tempTime);
             calendar.add(Calendar.HOUR_OF_DAY, 8);
