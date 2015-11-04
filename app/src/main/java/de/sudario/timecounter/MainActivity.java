@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     TextView startTime;
     TextView endTime;
     TextView finishtime;
+    TextView maxFinishTime;
 
     public void calcFinishDate(String time) {
         SimpleDateFormat df = new java.text.SimpleDateFormat("HH:mm");
@@ -53,13 +54,20 @@ public class MainActivity extends AppCompatActivity {
             //ToDo Calendar an 24h Format anpassen
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(tempTime);
-            calendar.add(Calendar.HOUR, 8);
+            calendar.add(Calendar.HOUR_OF_DAY, 8);
             calendar.add(Calendar.MINUTE, 50);
             calendar.add(Calendar.MINUTE, 24);
 
             //Setzen des Textviews
             finishtime = (TextView) findViewById(R.id.tvFinishTimeOutput);
-            finishtime.setText(calendar.get(Calendar.HOUR)+":"+calendar.get(Calendar.MINUTE));
+            finishtime.setText(calendar.get(Calendar.HOUR_OF_DAY)+":"+calendar.get(Calendar.MINUTE) + " Uhr");
+
+            //maximale Arbeitszeit
+            maxFinishTime = (TextView) findViewById(R.id.tvMaxFinishTimeOutput);
+            calendar.add(Calendar.HOUR_OF_DAY, 2);
+            maxFinishTime.setText(calendar.get(Calendar.HOUR_OF_DAY)+":"+calendar.get(Calendar.MINUTE) + " Uhr");
+
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
