@@ -22,44 +22,38 @@ public class MainActivity extends AppCompatActivity {
     private Date tEndTime = null;
     private long lTimeCount = 0;
 
-    private void addTime(Date pStart, Date pEnd){
-        // Brutto Arbeitszeit
-        long diff = pEnd.getTime() - pStart.getTime();
-        // Abzug der Pause - 50 Minuten in Millisekunden
-        long ohnePause = 0;
-        ohnePause = diff - 3000000;
-        // Abzug der Tarifvereinbarung - 24 Minuten in Millisekunden
-        long netto = 0;
-        netto = ohnePause - 1440000;
-        diff = netto;
-        //Maximalarbeitszeit von 10 Std
-        if (diff > 10){
-            diff = 10;
-        }
-        lTimeCount = diff;
-    }
-
     Calendar calendarStart = Calendar.getInstance();
     Calendar calendarEnd = Calendar.getInstance();
     TextView startTime;
     TextView endTime;
     TextView finishtime;
-
-    public void calcFinishDate(String time) {
+    TextView maxFinishTime;
+    //ToDo Kapselung:
+    //calcFinishDate
+    //calcMaxFinishDate
+    //SetTextview
+    //ToDo Berechnung des Zeitsaldos
+    private void calcFinishDate(String time) {
         SimpleDateFormat df = new java.text.SimpleDateFormat("HH:mm");
         try {
 
             Date tempTime = df.parse(time);
-            //ToDo Calendar an 24h Format anpassen
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(tempTime);
-            calendar.add(Calendar.HOUR, 8);
+            calendar.add(Calendar.HOUR_OF_DAY, 8);
             calendar.add(Calendar.MINUTE, 50);
             calendar.add(Calendar.MINUTE, 24);
 
             //Setzen des Textviews
             finishtime = (TextView) findViewById(R.id.tvFinishTimeOutput);
-            finishtime.setText(calendar.get(Calendar.HOUR)+":"+calendar.get(Calendar.MINUTE));
+            finishtime.setText(calendar.get(Calendar.HOUR_OF_DAY)+":"+calendar.get(Calendar.MINUTE) + " Uhr");
+
+            //maximale Arbeitszeit
+            maxFinishTime = (TextView) findViewById(R.id.tvMaxFinishTimeOutput);
+            calendar.add(Calendar.HOUR_OF_DAY, 2);
+            maxFinishTime.setText(calendar.get(Calendar.HOUR_OF_DAY)+":"+calendar.get(Calendar.MINUTE) + " Uhr");
+
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
