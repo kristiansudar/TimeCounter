@@ -50,8 +50,8 @@
         android:id="@+id/tvStartTimeLabel"
         android:layout_below="@+id/tvTimeCountLabel"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="80dp" />
+        android:layout_alignParentStart="false"
+        android:layout_marginTop="40dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -126,10 +126,21 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="18:14"
         android:id="@+id/tvMaxFinishTimeOutput"
-        android:layout_marginTop="23dp"
         android:textColor="#b31616"
-        android:layout_below="@+id/tvMaxFinishTimeLabel"
+        android:layout_alignTop="@+id/tvMaxFinishTimeLabel"
         android:layout_alignLeft="@+id/tvFinishTimeOutput"
         android:layout_alignStart="@+id/tvFinishTimeOutput" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnSubmitTime"
+        android:id="@+id/btnSubmitTime"
+        android:layout_below="@+id/tvMaxFinishTimeLabel"
+        android:layout_marginTop="58dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/tvIntro"
+        android:layout_alignEnd="@+id/tvIntro" />
 
 </RelativeLayout>
