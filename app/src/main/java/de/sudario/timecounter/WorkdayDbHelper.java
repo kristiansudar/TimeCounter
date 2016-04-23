@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 /**
- * Created by Sudario10 on 23.04.2016.
+ * Created by Sudario10 on 23.04.2016.1
  */
 public class WorkdayDbHelper extends SQLiteOpenHelper {
 
